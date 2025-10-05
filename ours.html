@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ours</title>
+  <style>
+    body {
+      background: #fff5f8;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #c2185b;
+      margin-bottom: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: white;
+      background-color: #c2185b;
+      padding: 10px 25px;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      background-color: #ad1457;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ours 💞</h1>
+  <div class="gallery">
+    <img src="images/us1.jpg" alt="Us photo 1" />
+    <img src="images/us2.jpg" alt="Us photo 2" />
+    <img src="images/us3.jpg" alt="Us photo 3" />
+    <!-- Add more images as needed -->
+  </div>
+  <a href="index.html">← Back</a>
+</body>
+</html>
