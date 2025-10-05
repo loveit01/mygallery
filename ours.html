@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ours</title>
+  <title>Ours </title>
   <style>
     body {
       background: #fff5f8;
@@ -11,23 +11,38 @@
       margin: 0;
       padding: 20px;
       text-align: center;
+      overflow-x: hidden;
     }
 
     h1 {
       color: #c2185b;
       margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeDown 1s ease forwards;
+    }
+
+    @keyframes fadeDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 10px;
+      opacity: 0;
+      animation: fadeInScale 1.2s ease forwards;
+      animation-delay: 0.3s;
     }
 
     .gallery img {
       width: 100%;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
       transition: transform 0.3s ease;
     }
 
@@ -35,9 +50,20 @@
       transform: scale(1.05);
     }
 
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
     a {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 25px;
       text-decoration: none;
       color: white;
       background-color: #c2185b;
@@ -49,16 +75,73 @@
     a:hover {
       background-color: #ad1457;
     }
+
+    /* Lightbox styling */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      animation: zoomIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); }
+      to { transform: scale(1); }
+    }
   </style>
 </head>
 <body>
-  <h1>Ours 💞</h1>
+  <h1>Mine</h1>
   <div class="gallery">
     <img src="images/us1.jpg" alt="Us photo 1" />
     <img src="images/us2.jpg" alt="Us photo 2" />
     <img src="images/us3.jpg" alt="Us photo 3" />
     <!-- Add more images as needed -->
   </div>
+
   <a href="index.html">← Back</a>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Expanded view" id="lightbox-img" />
+  </div>
+
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
+
